@@ -795,7 +795,7 @@ func resourceComputeInstanceV2Delete(d *schema.ResourceData, meta interface{}) e
 		return fmt.Errorf("Error creating OpenStack compute client: %s", err)
 	}
 
-	err = servers.Delete(computeClient, d.Id()).ExtractErr()
+	err = servers.ForceDelete(computeClient, d.Id()).ExtractErr()
 	if err != nil {
 		return fmt.Errorf("Error deleting OpenStack server: %s", err)
 	}
